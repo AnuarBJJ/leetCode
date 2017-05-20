@@ -1,3 +1,4 @@
+// my solution
 var twoSum = function(nums, target) {
     let runner = 0;
     while(runner < nums.length){cd ..
