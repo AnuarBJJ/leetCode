@@ -29,48 +29,50 @@ The wordList parameter had been changed to a list of strings (instead of a set o
  * @param {string[]} wordList
  * @return {number}
  */
-var ladderLength = function(beginWord, endWord, wordList) {
-    const visited = new Set();
-    let beginningSet = new Set();
-    let count = 2;
+ var ladderLength = function(beginWord, endWord, wordList) {
+     const visited = new Set();
+     let beginningSet = new Set();
+     let count = 2;
 
-    const wL = new Set();
+     const wL = new Set();
 
-    wordList.forEach( word => {
-       wL.add(word);
-    });
+     wordList.forEach( word => {
+        wL.add(word);
+     });
 
-    beginningSet.add(beginWord);
+     beginningSet.add(beginWord);
 
 
-    while(beginningSet.size > 0){
-        for(let word of beginningSet) {
+     while(beginningSet.size > 0){
+         const temp = new Set();
+         for(let word of beginningSet) {
 
-            const wordArray = word.split('');
-            const temp = new Set();
+             const wordArray = word.split('');
 
-            for(let index in wordArray){
 
-                let oldChar = wordArray[index];
-                for(let i=97; i< 123; i++){
-                    wordArray[index] = String.fromCharCode(i);
-                    let candidate = wordArray.join('');
-                    if(wL.has(candidate) && candidate === endWord){
-                        return count;
-                    }
+             for(let index in wordArray){
 
-                    if( wL.has(candidate) && !visited.has(candidate) ){
-                      temp.add(candidate);
-                        visited.add(candidate);
+                 let oldChar = wordArray[index];
+                 for(let i=97; i< 123; i++){
+                     wordArray[index] = String.fromCharCode(i);
+                     let candidate = wordArray.join('');
+                     if(wL.has(candidate) && candidate === endWord){
+                         return count;
+                     }
 
-                    }
-                }
-                wordArray[index] = oldChar;
-            }
-            count ++;
-            beginningSet = temp;
-        }
-    }
+                     if( wL.has(candidate) && !visited.has(candidate) ){
+                       temp.add(candidate);
+                         visited.add(candidate);
 
-    return 0;
-};
+                     }
+                 }
+                 wordArray[index] = oldChar;
+             }
+
+         }
+         count ++;
+         beginningSet = temp;
+     }
+
+     return 0;
+ };
