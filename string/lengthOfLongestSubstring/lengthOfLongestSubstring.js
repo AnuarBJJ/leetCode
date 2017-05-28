@@ -11,23 +11,18 @@ Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer 
 */
 
 var lengthOfLongestSubstring = function(s) {
-    const seen = new Map();
+    const seen = [];
 
-    let first = 0;
     let longest = 0;
-    let count = 0;
+    let last = 0;
 
     for(let i in s){
-
-      if(seen.has(s.charAt(i)) && seen.get(s.charAt(i)) >= first){
-        first = parseInt(seen.get(s.charAt(i))) + 1;
-        count = i - first;
-      }
-      count += 1;
-      if(count>longest){
-        longest = count;
-      }
-      seen.set(s.charAt(i), i);
+        while(seen[s.charCodeAt(i)]){
+            seen[s.charCodeAt(last)] = false;
+            last++;
+        }
+        seen[s.charCodeAt(i)] = true;
+        longest = Math.max(i-last+1, longest);
     }
     return longest;
 };
