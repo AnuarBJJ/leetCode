@@ -15,52 +15,27 @@ Input: "cbbd"
 Output: "bb"
 */
 
-var longestPalindrome = function(s) {
-    let matrix = [];
-    let firstRow = [];
-    let longest = 0;
-    let x = 0;
-    let y = 0;
-
-    for(let k=0; k<=s.length; k++){
-        firstRow.push(0);
-    }
-
-    matrix.push(firstRow);
-
-
-    let j = s.length;
-
-    while(j>0){
-      let row = [0];
-         for(let i=0; i<=s.length; i++){
-
-            if(s.charAt(i) === s.charAt(j-1)){
-              console.log("found " + s.charAt(i) + ' at ' + i + ', ' + j)
-                row[i] = matrix[s.length-j][i-1] + 1;
-                if(row[i] > longest){
-                    longest = row[i];
-                    x = s.length-j;
-                    y = i;
-                }
-            } else {
-                row[i] = 0;
-            }
-        matrix.push(row);
-      console.log("Pushing to the matrix " + row)
-      }
-      j--;
-    }
-
-
-  console.log(matrix)
-
-    let result = '';
-    while(matrix[x][y] !== 0){
-        result += s.charAt(y-1);
-      console.log(s.charAt(y-1));
-        x --;
-        y --;
-    }
-    return result;
-};
+/**
+ * @param {string} s
+ * @return {string}
+ */
+ var longestPalindrome = function(s) {
+     var start = 0, i=0, len=0;
+     while(i<s.length) {
+         var k = i, j=i, max;
+         while(k<s.length-1 && s[k]===s[k+1]) {
+             k++;
+         }
+         i=k+1;
+         while(k<s.length-1 && j>0 && s[k+1]===s[j-1]) {
+             k++;
+             j--;
+         }
+         max = k-j+1;
+         if (max > len) {
+             len = max;
+             start = j;
+         }
+     }
+     return s.substr(start,len);
+ };
