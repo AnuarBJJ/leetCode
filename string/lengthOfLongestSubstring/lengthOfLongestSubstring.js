@@ -10,18 +10,36 @@ Given "bbbbb", the answer is "b", with the length of 1.
 Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 */
 
+// two itereations
+// var lengthOfLongestSubstring = function(s) {
+//     const seen = [];
+//
+//     let longest = 0;
+//     let last = 0;
+//
+//     for(let i in s){
+//         while(seen[s.charCodeAt(i)]){
+//             seen[s.charCodeAt(last)] = false;
+//             last++;
+//         }
+//         seen[s.charCodeAt(i)] = true;
+//         longest = Math.max(i-last+1, longest);
+//     }
+//     return longest;
+// };
+// single itereation
+
 var lengthOfLongestSubstring = function(s) {
     const seen = [];
 
     let longest = 0;
     let last = 0;
 
-    for(let i in s){
-        while(seen[s.charCodeAt(i)]){
-            seen[s.charCodeAt(last)] = false;
-            last++;
+    for(let i=0; i<s.length; i++){
+        if(seen[s.charCodeAt(i)] >= last){
+            last = seen[s.charCodeAt(i)] + 1;
         }
-        seen[s.charCodeAt(i)] = true;
+        seen[s.charCodeAt(i)] = i;
         longest = Math.max(i-last+1, longest);
     }
     return longest;
