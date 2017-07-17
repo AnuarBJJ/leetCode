@@ -57,3 +57,39 @@ var threeSum = function(nums) {
   return result;
 };
 */
+
+
+var threeSum = function( nums ){
+  nums.sort( (a,b) => a-b );
+  const res = [];
+
+  for(let i=0; i<nums.length-1; i++){
+    let target = - nums[i]
+    let beg = i+1;
+    let end = nums.length-1;
+
+    while( beg < end){
+      if( nums[beg] + nums[end] < target ){
+        beg++;
+      } else if( nums[beg] + nums[end] > target  ){
+        end--;
+      } else {
+        res.push( [-target, nums[beg], nums[end]] );
+        while( nums[beg] === nums[beg+1] ){
+          beg++;
+        }
+        while( nums[end] === nums[end-1] ){
+          end--;
+        }
+        beg++;
+        end--;
+      }
+    }
+    while(nums[i] === nums[i+1]){
+      i++;
+    }
+
+  }
+
+  return res;
+}
