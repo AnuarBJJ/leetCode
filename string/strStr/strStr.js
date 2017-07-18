@@ -8,23 +8,36 @@ Returns the index of the first occurrence of needle in haystack, or -1 if needle
  * @param {string} needle
  * @return {number}
  */
-var strStr = function(haystack, needle) {
-    let haystackRunner = 0;
-    let needleRunner = 0;
+ /**
+  * @param {string} haystack
+  * @param {string} needle
+  * @return {number}
+  */
+  /*******************  naive solution ********************************
 
-    while(haystackRunner < haystack.length && needleRunner < needle.length){
-        if( haystack.charAt(haystackRunner) === needle.charAt(needleRunner) ){
-            let anotherHaystackRunner = haystackRunner;
-            while( haystack.charAt(anotherHaystackRunner) === needle.charAt(needleRunner) && needleRunner < needle.length ){
-                anotherHaystackRunner++;
-                needleRunner++;
-            }
-            if( needleRunner < needle.length ){
-                return haystackRunner;
-            }
-            needleRunner = 0;
-        }
-        haystackRunner++;
-    }
-    return -1;
-};
+ var strStr = function(haystack, needle) {
+     if( (haystack.length === 0 && needle.length === 0) ||  needle.length === 0){
+         return 0;
+     }
+
+
+
+     for(let i=0; i<haystack.length; i++){
+         if( haystack.length - i < needle.length ){
+             return -1;
+         }
+         if( haystack.charAt(i) === needle.charAt(0) ){
+             let haystackRunner = i;
+             let needleRunner = 0;
+             while( haystack.charAt(haystackRunner) === needle.charAt(needleRunner) && needleRunner < needle.length ){
+                 haystackRunner++;
+                 needleRunner++;
+             }
+             if( needleRunner === needle.length ){
+                 return i;
+             }
+         }
+     }
+     return -1;
+ };
+*/
