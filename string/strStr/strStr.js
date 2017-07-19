@@ -41,3 +41,10 @@ Returns the index of the first occurrence of needle in haystack, or -1 if needle
      return -1;
  };
 */
+  /***************** tricky solution  *****************
+  works faster, but not what interviewers might expect
+
+  var strStr = function(haystack, needle) {
+    return haystack.indexOf(needle);
+  }
+  */
