@@ -9,3 +9,25 @@ Minimize the total number of operations.
 Credits:
 Special thanks to @jianchao.li.fighter for adding this problem and creating all test cases.
 */
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var moveZeroes = function(nums) {
+    let lastZero = -1;
+
+    for(let i=0; i<nums.length; i++){
+        if(nums[i] === 0 ){
+            if(lastZero === -1){
+                lastZero = i;
+            }
+        } else {
+            if(lastZero !== -1){
+                nums[lastZero] = nums[i];
+                nums[i] = 0;
+                lastZero ++;
+            }
+
+        }
+    }
+};
