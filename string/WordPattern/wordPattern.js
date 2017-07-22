@@ -14,3 +14,29 @@ You may assume pattern contains only lowercase letters, and str contains lowerca
 Credits:
 Special thanks to @minglotus6 for adding this problem and creating all test cases.
 */
+/**
+ * @param {string} pattern
+ * @param {string} str
+ * @return {boolean}
+ */
+var wordPattern = function(pattern, str) {
+    const patternArray = pattern.split('');
+    const candidate = str.split(' ');
+    const hash = {};
+    const reverseHash = {};
+
+    if(patternArray.length!==candidate.length){
+        return false;
+    }
+    for(let i=0; i<candidate.length; i++){
+        if(!hash[patternArray[i]] && !reverseHash[candidate[i]] ){
+            hash[patternArray[i]] = candidate[i];
+            reverseHash[candidate[i]] = patternArray[i];
+        } else {
+            if( hash[patternArray[i]] !== candidate[i] || reverseHash[candidate[i]] !== patternArray[i]){
+                return false;
+            }
+        }
+    }
+    return true;
+};
