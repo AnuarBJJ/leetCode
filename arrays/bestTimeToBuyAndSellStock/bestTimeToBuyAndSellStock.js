@@ -14,3 +14,22 @@ Output: 0
 
 In this case, no transaction is done, i.e. max profit = 0.
 */
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function(prices) {
+    let maxDiff = 0;
+
+    let min = prices[0];
+
+    for(let num of prices){
+        if( num - min > maxDiff ){
+            maxDiff = num - min;
+        }
+        if( num < min ){
+            min = num;
+        }
+    }
+    return maxDiff;
+};
