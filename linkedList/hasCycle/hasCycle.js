@@ -17,21 +17,45 @@ Can you solve it without using extra space?
  * @param {ListNode} head
  * @return {boolean}
  */
-var hasCycle = function(head) {
-    const seen = new Set();
-    let current = head;
+// var hasCycle = function(head) {
+//     const seen = new Set();
+//     let current = head;
+//
+//     if(!current){
+//         return false;
+//     }
+//
+//     while( current.next !== null ){
+//         if( seen.has(current) ){
+//             return true;
+//         } else {
+//             seen.add(current);
+//         }
+//         current = current.next;
+//     }
+//     return false;
+// };
 
-    if(!current){
+// in place
+
+var hasCycle = function(head) {
+    let slow = head;
+    let fast = head;
+
+    if(!slow){
         return false;
     }
 
-    while( current.next !== null ){
-        if( seen.has(current) ){
-            return true;
-        } else {
-            seen.add(current);
+    while( fast ){
+        slow = slow.next;
+        fast = fast.next && fast.next.next;
+
+        if( fast === null ){
+            return false;
         }
-        current = current.next;
+        if( fast === slow ){
+            return true;
+        }
     }
     return false;
 };
