@@ -20,3 +20,14 @@ var addDigits = function(num) {
     }
     return num;
 };
+
+/**
+ * @param {number} num
+ * @return {number}
+ */
+/* solution based on congruence formula
+// https://en.wikipedia.org/wiki/Digital_root#Congruence_formula
+var addDigits = function(num) {
+    return num > 0 ? 1 + (num - 1) % 9 : 0
+};
+*/
