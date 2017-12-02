@@ -1,0 +1,19 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "Leet code coding algorithmic challenges",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codalife/leetCode.git"
+  },
+  "author": "Anuar Zhuken",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codalife/leetCode/issues"
+  },
+  "homepage": "https://github.com/codalife/leetCode#readme"
+}
