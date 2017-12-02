@@ -1,12 +1,3 @@
-// imitsde server point
-// checks if we should accept
-// 60 requests per minute
-// output is boolean (429)
-
-// track how many requests have not expired at every moment
-
-// const moment = require('moment');
-
 function canAccept(size) {
     const circularBuffer = [];
 
@@ -15,6 +6,7 @@ function canAccept(size) {
     return () => {
         const now = Date.now();
         const atStart = circularBuffer[start];
+        console.log(`Circular buffer is less then size: ${circularBuffer.length <= size}`);
 
         if (!atStart || now - atStart > 1000) {
             circularBuffer[start] = now;
@@ -32,6 +24,7 @@ function canAccept(size) {
 const withSize60 = canAccept(60);
 
 for (let i = 0; i < 80; i += 1) {
+    console.log(`${i}: ${withSize60()}`);
     console.log(`${i}: ${withSize60()}`);
 }
 
