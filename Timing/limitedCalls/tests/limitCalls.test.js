@@ -29,6 +29,7 @@ test(`returns false if time hasn't expired and the limit been hit`, () => {
     acceptsOne();
     mockdate.set(Date.now() + 500);
     expect(acceptsOne()).toBe(false);
+    mockdate.reset();
 })
 
 test(`returns true if time has expired and the limit been hit`, () => {
@@ -36,4 +37,5 @@ test(`returns true if time has expired and the limit been hit`, () => {
     acceptsOne();
     mockdate.set(Date.now() + 1000);
     expect(acceptsOne()).toBe(false);
+    mockdate.reset();
 })
