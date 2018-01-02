@@ -59,3 +59,33 @@ var calculate = function (s) {
         return subres;
     })(0, s.length);
 };
+
+/*
+BETTER SOLUTION
+var calculate = function(s) {
+        var res = 0, sign = 1, n = s.length, st = [];
+        for (var i = 0; i < n; ++i) {
+            if (s[i] >= '0'&& s[i] <= '9') {
+                var num = 0;
+                while (i < n && s[i] >= '0'&& s[i] <= '9') {
+                    num = 10 * num + parseInt(s[i++]);
+                }
+                res += sign * num;
+                --i;
+            } else if (s[i] == '+') {
+                sign = 1;
+            } else if (s[i] == '-') {
+                sign = -1;
+            } else if (s[i] == '(') {
+                st.push(res);
+                st.push(sign);
+                res = 0;
+                sign = 1;
+            } else if (s[i] == ')') {
+                res *= st.pop();
+                res += st.pop();
+            }
+        }
+        return res;
+};
+*/
