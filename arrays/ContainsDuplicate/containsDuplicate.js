@@ -7,7 +7,6 @@
  */
 var containsDuplicate = function(nums) {
   const Seen = new Set();
-  let soFar = 0;
 
   return nums.some(num => {
     if (Seen.has(num)) {
