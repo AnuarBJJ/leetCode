@@ -19,6 +19,8 @@ isMatch("aab", "c*a*b") → true
  * @param {string} p
  * @return {boolean}
  */
+
+// RECURSIVE !!!!
 function isMatch(s, p) {
   if (p.length === 0) {
     return s.length === 0;
