@@ -58,9 +58,7 @@ Returns the index of the first occurrence of needle in haystack, or -1 if needle
 
 const buildLongestProperSuffix = pattern => {
   const lpsArray = [0];
-
   let length = 0;
-
   let runner = 1;
 
   while (runner < pattern.length) {
